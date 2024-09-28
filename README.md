@@ -28,3 +28,40 @@ Test using curl HTTP://127.0.0.1:12345/show_result -> shows the default predicti
 In postman, set Headers -> Content-Type : application/json
 Input:
 [{"pickup_community_area":40, "trip_start_hour":12,"trip_miles":20.3, "trip_seconds":5000,"dropoff_community_area":33},{"pickup_community_area":40, "trip_start_hour":12,"trip_miles":20.3, "trip_seconds":500,"dropoff_community_area":33}]
+
+
+
+
+
+Example Use to open and run the app on local:
+
+
+
+Generated Processed file from Source CSV:
+
+(base) divyankrahoria@Divyanks-MacBook-Air taxiproject % python data_analysis.py TaxiData.csv
+TaxiData
+(base) divyankrahoria@Divyanks-MacBook-Air taxiproject % python test_train_split.py 
+
+
+Example Training XGB Boost:
+
+(base) divyankrahoria@Divyanks-MacBook-Air taxiproject % python train_xgb.py TaxiData_Processed.csv 
+Best Hyperparameters for Xgboost: {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 200}
+Best model estimator in the Xgboost
+Mean Squared Error: 5.69894284310572
+R2_Score 0.9331520530562872
+
+Rename file xgbmodel.pkl to model.pkl
+
+Use python deploy.py
+
+This will start local server
+
+
+Then use streamlit run webapp_Taxi.py
+This will start the streamlit app
+
+
+
+
